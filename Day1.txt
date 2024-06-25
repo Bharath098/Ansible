@@ -1,0 +1,132 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Windows\system32> wsl --install
+Installing: Virtual Machine Platform
+Virtual Machine Platform has been installed.
+Installing: Windows Subsystem for Linux
+Windows Subsystem for Linux has been installed.
+Installing: Ubuntu
+Ubuntu has been installed.
+The requested operation is successful. Changes will not be effective until the system is rebooted.
+
+ansible@controlnode:~$ ssh -i ubuntu@13.201.135.4
+Warning: Identity file ubuntu@13.201.135.4 not accessible: No such file or directory.
+usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
+           [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
+           [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
+           [-i identity_file] [-J [user@]host[:port]] [-L address]
+           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
+           [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
+           [-w local_tun[:remote_tun]] destination [command [argument ...]]
+ansible@controlnode:~$ ssh-copy-id ubuntu@13.201.135.4
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ansible/.ssh/id_rsa.pub"
+The authenticity of host '13.201.135.4 (13.201.135.4)' can't be established.
+ED25519 key fingerprint is SHA256:ACO6KnSOKzyx3RfQtckeN7SljDCacirXfs/+1EPfyYw.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+ubuntu@13.201.135.4's password:
+Permission denied, please try again.
+ubuntu@13.201.135.4's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'ubuntu@13.201.135.4'"
+and check to make sure that only the key(s) you wanted were added.
+
+ansible@controlnode:~$ ssh ubuntu@13.201.135.4
+Welcome to Ubuntu 24.04 LTS (GNU/Linux 6.8.0-1008-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Jun 25 08:43:23 UTC 2024
+
+  System load:  0.0               Processes:             110
+  Usage of /:   23.5% of 6.71GB   Users logged in:       1
+  Memory usage: 29%               IPv4 address for enX0: 172.31.34.175
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Tue Jun 25 08:35:26 2024 from 13.233.177.3
+ubuntu@ip-172-31-34-175:~$ logout
+Connection to 13.201.135.4 closed.
+ansible@controlnode:~$ vim inventory.ini
+ansible@controlnode:~$ ansible -i inventory.ini -m ping all
+[WARNING]: Platform linux on host ubuntu@13.201.135.4 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ubuntu@13.201.135.4 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ansible@controlnode:~$ vim inventory.ini
+ansible@controlnode:~$ ansible -i inventory.ini -m ping DB
+The authenticity of host '65.2.137.234 (65.2.137.234)' can't be established.
+ED25519 key fingerprint is SHA256:ruAMpBiMJqKi3D1E24xFs8PEbG5nTVKZZZ7ONGKRWJA.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: [hashed name]
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+[WARNING]: Platform linux on host ubuntu@65.2.137.234 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ubuntu@65.2.137.234 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ansible@controlnode:~$ ansible -i inventory.ini -m ping app
+[WARNING]: Platform linux on host ubuntu@13.201.135.4 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ubuntu@13.201.135.4 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ansible@controlnode:~$ ansible -i inventory.ini -m ping all
+[WARNING]: Platform linux on host ubuntu@13.201.135.4 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ubuntu@13.201.135.4 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+[WARNING]: Platform linux on host ubuntu@65.2.137.234 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ubuntu@65.2.137.234 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ansible@controlnode:~$
