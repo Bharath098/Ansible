@@ -1,0 +1,15 @@
+---
+Details:
+  Name: Bharath
+  Age: 26
+  Working: Technical
+  Location: Bengaluru
+Technologies: -scalecomputing -Ansible -Python
+Address:
+  Company: Tetrawiis
+  street: Watertank road girinagar
+  location: Banashankari
+  City: Bengaluru
+
+
+	
