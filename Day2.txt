@@ -1,0 +1,193 @@
+ansible@DESKTOP-RBOH8CH:~$ ansible-galaxy role init test
+- Role test was created successfully
+ansible@DESKTOP-RBOH8CH:~$ ls -ltr
+total 44
+-rw-r--r--  1 ansible ansible   78 Jun 25 11:37 bharath-aws-keypair.pem:Zone.Identifier
+-rw-------  1 ansible ansible 1678 Jun 25 11:37 bharath-aws-keypair.pem
+-rw-r--r--  1 ansible ansible  573 Jun 25 12:35 ansible.pub
+-rw-------  1 ansible ansible 2602 Jun 25 12:35 ansible
+-rw-r--r--  1 ansible ansible   55 Jun 26 11:15 index.html:Zone.Identifier
+-rw-r--r--  1 ansible ansible 1275 Jun 26 11:15 index.html
+-rw-r--r--  1 ansible ansible   55 Jun 26 11:15 first-playbook.yaml:Zone.Identifier
+-rw-r--r--  1 ansible ansible  361 Jun 26 11:15 first-playbook.yaml
+-rw-r--r--  1 ansible ansible   21 Jun 26 11:28 inventory.ini
+drwx------  3 ansible ansible 4096 Jun 27 11:52 snap
+drwxr-xr-x 10 ansible ansible 4096 Jun 27 11:57 test
+ansible@DESKTOP-RBOH8CH:~$ cd test/
+ansible@DESKTOP-RBOH8CH:~/test$ ls -ltr
+total 36
+drwxr-xr-x 2 ansible ansible 4096 Jun 27 11:57 templates
+drwxr-xr-x 2 ansible ansible 4096 Jun 27 11:57 files
+-rw-r--r-- 1 ansible ansible 1328 Jun 27 11:57 README.md
+drwxr-xr-x 2 ansible ansible 4096 Jun 27 11:57 tests
+drwxr-xr-x 2 ansible ansible 4096 Jun 27 11:57 vars
+drwxr-xr-x 2 ansible ansible 4096 Jun 27 11:57 tasks
+drwxr-xr-x 2 ansible ansible 4096 Jun 27 11:57 meta
+drwxr-xr-x 2 ansible ansible 4096 Jun 27 11:57 handlers
+drwxr-xr-x 2 ansible ansible 4096 Jun 27 11:57 defaults
+ansible@DESKTOP-RBOH8CH:~/test$ cd
+ansible@DESKTOP-RBOH8CH:~$ rm -rf test/
+ansible@DESKTOP-RBOH8CH:~$ ls
+ansible                  bharath-aws-keypair.pem:Zone.Identifier  index.html                  snap
+ansible.pub              first-playbook.yaml                      index.html:Zone.Identifier
+bharath-aws-keypair.pem  first-playbook.yaml:Zone.Identifier      inventory.ini
+ansible@DESKTOP-RBOH8CH:~$ cd snap/
+ansible@DESKTOP-RBOH8CH:~/snap$ ls
+ubuntu-desktop-installer
+ansible@DESKTOP-RBOH8CH:~/snap$ cd ubuntu-desktop-installer/
+ansible@DESKTOP-RBOH8CH:~/snap/ubuntu-desktop-installer$ ls
+1286  common  current
+ansible@DESKTOP-RBOH8CH:~/snap/ubuntu-desktop-installer$ cd
+ansible@DESKTOP-RBOH8CH:~$ ansible-galaxy role init webapp
+- Role webapp was created successfully
+ansible@DESKTOP-RBOH8CH:~$ vim first-playbook.yaml
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ vim inventory.ini
+ansible@DESKTOP-RBOH8CH:~$ ssh ubuntu@3.6.40.44
+The authenticity of host '3.6.40.44 (3.6.40.44)' can't be established.
+ED25519 key fingerprint is SHA256:ruAMpBiMJqKi3D1E24xFs8PEbG5nTVKZZZ7ONGKRWJA.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: [hashed name]
+    ~/.ssh/known_hosts:2: [hashed name]
+    ~/.ssh/known_hosts:6: [hashed name]
+    ~/.ssh/known_hosts:7: [hashed name]
+    ~/.ssh/known_hosts:8: [hashed name]
+    ~/.ssh/known_hosts:9: [hashed name]
+    ~/.ssh/known_hosts:10: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '3.6.40.44' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 24.04 LTS (GNU/Linux 6.8.0-1009-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Thu Jun 27 06:45:14 UTC 2024
+
+  System load:  0.4               Processes:             109
+  Usage of /:   31.9% of 6.71GB   Users logged in:       0
+  Memory usage: 21%               IPv4 address for enX0: 172.31.40.170
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+37 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Wed Jun 26 09:48:44 2024 from 13.233.177.4
+ubuntu@ip-172-31-40-170:~$ logout
+Connection to 3.6.40.44 closed.
+ansible@DESKTOP-RBOH8CH:~$ ansible-galaxy role init webapp/
+ERROR! - the directory ./webapp/ already exists. You can use --force to re-initialize this directory,
+however it will reset any main.yml files that may have
+been modified there already.
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ ansible-playbook -i inventory.ini first-playbook.yaml
+
+PLAY [all] *************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+[WARNING]: Platform linux on host ubuntu@3.6.40.44 is using the discovered Python interpreter at /usr/bin/python3.12,
+but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [ubuntu@3.6.40.44]
+
+PLAY RECAP *************************************************************************************************************
+ubuntu@3.6.40.44           : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+ansible@DESKTOP-RBOH8CH:~$ ansible-playbook -i inventory.ini first-playbook.yaml
+
+PLAY [all] *************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+[WARNING]: Platform linux on host ubuntu@3.6.40.44 is using the discovered Python interpreter at /usr/bin/python3.12,
+but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [ubuntu@3.6.40.44]
+
+PLAY RECAP *************************************************************************************************************
+ubuntu@3.6.40.44           : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+ansible@DESKTOP-RBOH8CH:~$ ls
+ansible                  bharath-aws-keypair.pem:Zone.Identifier  index.html                  snap
+ansible.pub              first-playbook.yaml                      index.html:Zone.Identifier  webapp
+bharath-aws-keypair.pem  first-playbook.yaml:Zone.Identifier      inventory.ini
+ansible@DESKTOP-RBOH8CH:~$ ls webapp/files/
+ansible@DESKTOP-RBOH8CH:~$ ls
+ansible                  bharath-aws-keypair.pem:Zone.Identifier  index.html                  snap
+ansible.pub              first-playbook.yaml                      index.html:Zone.Identifier  webapp
+bharath-aws-keypair.pem  first-playbook.yaml:Zone.Identifier      inventory.ini
+ansible@DESKTOP-RBOH8CH:~$ cd webapp/files/
+ansible@DESKTOP-RBOH8CH:~/webapp/files$ ls
+ansible@DESKTOP-RBOH8CH:~/webapp/files$ cd
+ansible@DESKTOP-RBOH8CH:~$ mv index.html webapp/files/
+ansible@DESKTOP-RBOH8CH:~$ ls
+ansible                  bharath-aws-keypair.pem:Zone.Identifier  index.html:Zone.Identifier  webapp
+ansible.pub              first-playbook.yaml                      inventory.ini
+bharath-aws-keypair.pem  first-playbook.yaml:Zone.Identifier      snap
+ansible@DESKTOP-RBOH8CH:~$ ansible-playbook -i inventory.ini first-playbook.yaml
+
+PLAY [all] *************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+[WARNING]: Platform linux on host ubuntu@3.6.40.44 is using the discovered Python interpreter at /usr/bin/python3.12,
+but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [ubuntu@3.6.40.44]
+
+PLAY RECAP *************************************************************************************************************
+ubuntu@3.6.40.44           : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ vim first-playbook.yaml
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ ansible-playbook -i inventory.ini first-playbook.yaml
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/home/ansible/webapp/tasks/main.yml': line 4, column 26, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+ name: Install apache httpd
+      ansible.builtin.apt:
+                         ^ here
+ansible@DESKTOP-RBOH8CH:~$ vim webapp/tasks/main.yml
+ansible@DESKTOP-RBOH8CH:~$ ansible-playbook -i inventory.ini first-playbook.yaml
+
+PLAY [all] *************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+[WARNING]: Platform linux on host ubuntu@3.6.40.44 is using the discovered Python interpreter at /usr/bin/python3.12,
+but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [ubuntu@3.6.40.44]
+
+TASK [webapp : Install apache httpd] ***********************************************************************************
+ok: [ubuntu@3.6.40.44]
+
+TASK [webapp : Copy file with owner and permissions] *******************************************************************
+changed: [ubuntu@3.6.40.44]
+
+PLAY RECAP *************************************************************************************************************
+ubuntu@3.6.40.44           : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
